@@ -1,43 +1,177 @@
-<div class="forumbg announcement">
-	<div class="inner"><span class="corners-top"><span></span></span>
-		<ul class="topiclist">
-			<li class="header">
-				<dl class="icon">
-					<dt>Ultime immagini del Forum</dt>
-				</dl>
-			</li>
-		</ul>
-		<ul class="topiclist topics">
-			<li class="row bg1">
-				<div class="wrap_carousel">
-					<div class="jcarousel-wrapper">
-						<div class="jcarousel">
-							<ul>
-								<!-- BEGIN last_pictures -->
-								<li>								
-									<span><a href="{last_pictures.LAST_TOPIC_LINK}" title="vai al Topic">{last_pictures.LAST_SHORT_TITLE}</a></span><br />
-									<a href="{last_pictures.LAST_ATTACH_LINK}" class="highslide" title="{last_pictures.LAST_FORUM_SHORT}" onclick="return hs.expand(this)">
-									<img style="height: 100px; border: 2px solid #FFFFFF;" src="{last_pictures.LAST_THUMBS}"  alt="clicca per ingrandire" title="{last_pictures.LAST_TOPIC_TITLE}" /></a>
-									<span>di {last_pictures.LAST_TOPIC_AUTHOR}</span>
-									<div class="highslide-heading">{last_pictures.LAST_TOPIC_TITLE}</div>
-									<div class="highslide-caption">
-										<div style="float:left; font-size: 12px; color: #59550C; text-align: left;">in {last_pictures.LAST_FORUM_NAME}<br />di {last_pictures.LAST_TOPIC_AUTHOR}</div>
-										<div style="float:right; text-align: right;"><a href="{last_pictures.LAST_TOPIC_LINK}" title="vai al Topic">Apri il Topic</a></div>
-										<div style="clear: both;"></div>
-									</div>
-								</li>
-								<!-- END last_pictures -->
-							</ul>
+<div id="lastpictures-box" class="lastpictures-box">
+	<div class="forabg">
+		<div class="inner">
+			<ul class="toptenlist">
+				<li class="header">
+					<dl>						
+						<!-- IF TOPTEN_MODE == 1 -->
+						<div class="lastpictures-title">{L_LIST_TITLE_1}</div>
+						<!-- ELSEIF TOPTEN_MODE == 2 -->
+						<div class="lastpictures-title">{L_LIST_TITLE_2}</div>
+						<!-- ELSEIF TOPTEN_MODE == 3 -->
+						<div class="lastpictures-title">{L_LIST_TITLE_3}</div>
+						<!-- ELSEIF TOPTEN_MODE == 4 -->
+						<div class="lastpictures-title">{L_LIST_TITLE_4}</div>
+						<div style="float: left;"> 
+						<form action="index.php?mode=4" method="post">
+							<div id="select-text" class="select-text">
+								<span>{L_SELECT_TEXT}</span>
+								<select class="select_options" name="sel_views" onchange='this.form.submit()'>
+								<!-- IF TIME_SELECTED == 1 --><option value='0' selected="selected"><!-- ELSE --><option value='0'><!-- ENDIF -->{L_SELECT_TIME_0}</option>
+								<!-- IF TIME_SELECTED == 2 --><option value='1' selected="selected"><!-- ELSE --><option value='1'><!-- ENDIF -->{L_SELECT_TIME_1}</option>
+								<!-- IF TIME_SELECTED == 3 --><option value='2' selected="selected"><!-- ELSE --><option value='2'><!-- ENDIF -->{L_SELECT_TIME_2}</option>
+								<!-- IF TIME_SELECTED == 4 --><option value='3' selected="selected"><!-- ELSE --><option value='3'><!-- ENDIF -->{L_SELECT_TIME_3}</option>
+								<!-- IF TIME_SELECTED == 5 --><option value='4' selected="selected"><!-- ELSE --><option value='4'><!-- ENDIF -->{L_SELECT_TIME_4}</option>
+								</select>
+							</div>
+						</form>
 						</div>
-						<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-						<a href="#" class="jcarousel-control-next">&rsaquo;</a>
+						<!-- ENDIF -->
+						<dd style="float: right; margin-top: 0;">
+							<div class="nav-pictures" role="navigation">
+								<div class="inner">
+									<ul id="nav-main" class="linklist1" role="menubar">
+									
+										<li id="quick-links" class="quick-links dropdown-container responsive-menu" data-skip-responsive="true">
+											<a href="#" class="dropdown-trigger"><i class="icon fa-bars fa-fw" aria-hidden="true"></i><span>{L_LIST_OPTIONS}</span></a>
+											<div class="dropdown">
+												<div class="pointer"><div class="pointer-inner"></div></div>
+												<ul class="dropdown-contents" role="menu">					
+													<li class="separator"></li>
+													<li class="link-pictures">
+														<a href="index.php?mode=1" role="menuitem"><i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_LIST_PICTURES}</span></a>
+													</li>
+													<li class="link-pictures">
+														<a href="index.php?mode=2" role="menuitem"><i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_LIST_TOPICS}</span></a>
+													</li>
+													<li class="link-pictures">
+														<a href="index.php?mode=3" role="menuitem"><i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_LIST_POSTS}</span></a>
+													</li>
+													<li class="link-pictures">
+														<a href="index.php?mode=4" role="menuitem"><i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_LIST_VIEWS}</span></a>
+													</li>										
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</dd>
+						<div style="clear: both;"></div>
+					</dl>
+				</li>
+				<!-- IF TOPTEN_MODE == 1 -->
+				<li class="row bg1">
+					<div class="wrap_carousel">
+						<div class="jcarousel-wrapper">
+							<div class="jcarousel">
+								<ul>
+									<!-- BEGIN last_pictures -->
+									<li>								
+										<span><a href="{last_pictures.LAST_TOPIC_LINK}" title="{L_TITLE_TEXT_1}">{last_pictures.LAST_SHORT_TITLE}</a></span><br />
+										<a href="{last_pictures.LAST_ATTACH_LINK}" class="highslide" title="{last_pictures.LAST_FORUM_SHORT}" onclick="return hs.expand(this)">
+										<img style="border: 2px solid #FFFFFF;" src="{last_pictures.LAST_ATTACH_LINK}"  alt="{L_ALT_TEXT_1}" title="{last_pictures.LAST_FORUM_SHORT}" /></a><br />
+										<span>{L_LIST2_BY} {last_pictures.LAST_TOPIC_AUTHOR}</span>
+										<div class="highslide-heading"><span>{L_LIST2_IN} {last_pictures.LAST_TOPIC_TITLE}</span></div>
+										<div class="highslide-caption">
+											<div style="float:left; font-size: 12px; color: #59550C; text-align: left;"><span>{last_pictures.LAST_FORUM_NAME}</span><br />{L_LIST2_BY} {last_pictures.LAST_TOPIC_AUTHOR}</div>
+											<div style="float:right; text-align: right;"><a href="{last_pictures.LAST_TOPIC_LINK}" title="{L_TITLE_TEXT_1}">{L_TITLE_TEXT_1}</a></div>
+										</div>
+									</li>
+									<!-- END last_pictures -->
+								</ul>
+							</div>						
+							<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+							<a href="#" class="jcarousel-control-next">&rsaquo;</a>
 
-						<p class="jcarousel-pagination"></p>
+							<!--<p class="jcarousel-pagination"></p>-->
+						</div>
 					</div>
-				</div>
-			</li>   
-		</ul>
-	<span class="corners-bottom"><span></span></span></div>
+				</li>
+				<!-- ENDIF -->
+				<!-- IF TOPTEN_MODE == 2 -->
+				<li class="row bg1">
+					<div>
+						<ul  class="topiclist forums" >
+							<li style="border-bottom: 1px solid #CCCCCC;">
+								<dl>
+									<dd style="width: 10%; color: green; padding: 0">{L_LIST2_DATA}</dd>
+									<dd style="width: 50%; color: green; padding: 0">{L_LIST2_TITOLO}</dd>
+									<dd style="width: 30%; color: green; padding: 0">{L_LIST2_FORUM}</dd>
+									<dd style="color: green; padding: 0">{L_LIST2_AUTHOR}</dd>
+								</dl>
+							</li>
+							<!-- BEGIN topten2_list -->
+							<li class="{topten2_list.LAST_TOPIC_BG}">
+								<dl>
+									<dd class="small-icon;" style="width: 10%; padding: 0">{topten2_list.LAST_TOPIC_DATA} </dd>
+									<dd class="small-icon;" style="width: 50%; padding: 0"><a style="font-weight: bold" href="{topten2_list.LAST_TOPIC_LINK}" title="{topten2_list.LAST_TOPIC_TITLE}" >{topten2_list.LAST_TOPIC_TITLE}</a></dd>
+									<dd class="small-icon;" style="width: 30%; padding: 0">{topten2_list.LAST_TOPIC_FORUM}</dd>
+									<dd class="small-icon;" style="padding: 0">{topten2_list.LAST_TOPIC_AUTHOR}</dd>
+								</dl>
+							</li>	
+							<!-- END topten2_list -->
+						</ul>
+					</div>
+				</li>
+				<!-- ENDIF -->
+				<!-- IF TOPTEN_MODE == 3 -->
+				<li class="row bg1">
+					<div>
+						<ul  class="topiclist forums" >
+							<li style="border-bottom: 1px solid #CCCCCC;">
+								<dl>
+									<dd style="width: 10%; color: green; padding: 0">{L_LIST2_DATA}</dd>
+									<dd style="width: 50%; color: green; padding: 0">{L_LIST2_TITOLO}</dd>
+									<dd style="width: 30%; color: green; padding: 0">{L_LIST2_FORUM}</dd>
+									<dd style="color: green; padding: 0">{L_LIST2_AUTHOR}</dd>
+								</dl>
+							</li>
+							<!-- BEGIN topten3_list -->
+							<li class="{topten3_list.LAST_POST_BG}">
+								<dl>
+									<dd class="small-icon;" style="width: 10%; padding: 0">{topten3_list.LAST_POST_DATA} </dd>
+									<dd class="small-icon;" style="width: 50%; padding: 0"><a style="font-weight: bold" href="{topten3_list.LAST_POST_LINK}" title="{topten3_list.LAST_POST_TITLE}" >{topten3_list.LAST_POST_TITLE}</a></dd>
+									<dd class="small-icon;" style="width: 30%; padding: 0">{topten3_list.LAST_POST_FORUM}</dd>
+									<dd class="small-icon;" style="padding: 0">{topten3_list.LAST_POST_AUTHOR}</dd>
+								</dl>
+							</li>	
+							<!-- END topten3_list -->
+						</ul>
+					</div>
+				</li>
+				<!-- ENDIF -->
+				<!-- IF TOPTEN_MODE == 4 -->
+				<li class="row bg1">
+					<div>
+						<ul  class="topiclist forums" >
+							<li style="border-bottom: 1px solid #CCCCCC;">
+								<dl>
+									<dd style="width: 10%; color: green; padding: 0">{L_LIST2_DATA}</dd>
+									<dd style="width: 40%; color: green; padding: 0">{L_LIST2_TITOLO}</dd>
+									<dd style="width: 10%; color: green; padding: 0">{L_LIST2_VIEWS}</dd>
+									<dd style="width: 30%; color: green; padding: 0">{L_LIST2_FORUM}</dd>
+									<dd style="color: green; padding: 0">{L_LIST2_AUTHOR}</dd>
+								</dl>
+							</li>
+							<!-- BEGIN topten4_list -->
+							<li class="{topten4_list.VIEW_TOPIC_BG}">
+								<dl>
+									<dd class="small-icon;" style="width: 10%; padding: 0">{topten4_list.VIEW_TOPIC_DATA} </dd>
+									<dd class="small-icon;" style="width: 40%; padding: 0"><a style="font-weight: bold" href="{topten4_list.VIEW_TOPIC_LINK}" title="{topten4_list.VIEW_TOPIC_TITLE}" >{topten4_list.VIEW_TOPIC_TITLE}</a></dd>
+									<dd class="small-icon;" style="width: 10%; padding: 0">{topten4_list.VIEW_TOPIC_VIEWS}</dd>
+									<dd class="small-icon;" style="width: 30%; padding: 0">{topten4_list.VIEW_TOPIC_FORUM}</dd>
+									<dd class="small-icon;" style="padding: 0">{topten4_list.VIEW_TOPIC_AUTHOR}</dd>
+								</dl>
+							</li>	
+							<!-- END topten4_list -->
+						</ul>
+					</div>
+				</li>
+				<!-- ENDIF -->				
+			</ul>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
 </div>
-<div style="clear: both;"></div>
-<br />
+
